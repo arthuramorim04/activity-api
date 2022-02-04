@@ -17,11 +17,7 @@ func ConfigRoute(router *gin.Engine) *gin.Engine {
 			books.PUT("/", controllers.EditBook)
 			books.DELETE("/:id", controllers.DeleteBook)
 		}
-		users := main.Group("users")
-		{
-			users.POST("/", controllers.CreateUser)
-		}
-
+		main.POST("/create-user", controllers.CreateUser)
 		main.POST("/login", controllers.Login)
 	}
 

@@ -29,7 +29,7 @@ func CreateUser(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "Cannot create book: " + err.Error(),
+			"error": "Cannot create user: " + err.Error(),
 		})
 
 		return
