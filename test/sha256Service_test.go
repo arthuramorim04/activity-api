@@ -3,7 +3,7 @@ package services_test
 import (
 	"testing"
 
-	"github.com/arthuramorim04/go-books-api.git/services"
+	"github.com/arthuramorim04/go-activity-api.git/services"
 )
 
 func TestSHA256Encode(t *testing.T) {

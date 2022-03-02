@@ -1,7 +1,7 @@
 package middlewares
 
 import (
-	"github.com/arthuramorim04/go-books-api.git/services"
+	"github.com/arthuramorim04/go-activity-api.git/services"
 	"github.com/gin-gonic/gin"
 )
 

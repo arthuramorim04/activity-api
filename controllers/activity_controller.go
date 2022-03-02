@@ -3,12 +3,12 @@ package controllers
 import (
 	"strconv"
 
-	"github.com/arthuramorim04/go-books-api.git/database"
-	"github.com/arthuramorim04/go-books-api.git/models"
+	"github.com/arthuramorim04/go-activity-api.git/database"
+	"github.com/arthuramorim04/go-activity-api.git/models"
 	"github.com/gin-gonic/gin"
 )
 
-func ShowBook(c *gin.Context) {
+func ShowActivity(c *gin.Context) {
 	id := c.Param("id")
 	newid, err := strconv.Atoi(id)
 
@@ -21,43 +21,43 @@ func ShowBook(c *gin.Context) {
 
 	db := database.GetDatabase()
 
-	var book models.Book
-	err = db.First(&book, newid).Error
+	var activity models.Activity
+	err = db.First(&activity, newid).Error
 
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "Cannot find book: " + err.Error(),
+			"error": "Cannot find activity: " + err.Error(),
 		})
 		return
 	}
 
-	c.JSON(200, book)
+	c.JSON(200, activity)
 }
 
-func ShowAllBooks(c *gin.Context) {
+func ShowAllActivity(c *gin.Context) {
 	db := database.GetDatabase()
 
-	var books []models.Book
-	err := db.Find(&books).Error
+	var activitys []models.Activity
+	err := db.Find(&activitys).Error
 
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "Cannot list books: " + err.Error(),
+			"error": "Cannot list activitys: " + err.Error(),
 		})
 
 		return
 	}
 
-	c.JSON(200, books)
+	c.JSON(200, activitys)
 }
 
-func CreateBook(c *gin.Context) {
+func CreateActivity(c *gin.Context) {
 
 	db := database.GetDatabase()
 
-	var book models.Book
+	var activity models.Activity
 
-	err := c.ShouldBindJSON(&book)
+	err := c.ShouldBindJSON(&activity)
 
 	if err != nil {
 		c.JSON(400, gin.H{
@@ -67,20 +67,20 @@ func CreateBook(c *gin.Context) {
 		return
 	}
 
-	err = db.Create(&book).Error
+	err = db.Create(&activity).Error
 
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "Cannot create book: " + err.Error(),
+			"error": "Cannot create activity: " + err.Error(),
 		})
 
 		return
 	}
 
-	c.JSON(200, book)
+	c.JSON(200, activity)
 }
 
-func DeleteBook(c *gin.Context) {
+func DeleteActivity(c *gin.Context) {
 	id := c.Param("id")
 	newid, err := strconv.Atoi(id)
 
@@ -93,11 +93,11 @@ func DeleteBook(c *gin.Context) {
 
 	db := database.GetDatabase()
 
-	err = db.Delete(&models.Book{}, newid).Error
+	err = db.Delete(&models.Activity{}, newid).Error
 
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "cannot delete book: " + err.Error(),
+			"error": "cannot delete activity: " + err.Error(),
 		})
 		return
 	}
@@ -105,12 +105,12 @@ func DeleteBook(c *gin.Context) {
 	c.Status(204)
 }
 
-func EditBook(c *gin.Context) {
+func EditActivity(c *gin.Context) {
 	db := database.GetDatabase()
 
-	var book models.Book
+	var activity models.Activity
 
-	err := c.ShouldBindJSON(&book)
+	err := c.ShouldBindJSON(&activity)
 	if err != nil {
 		c.JSON(400, gin.H{
 			"error": "cannot bind JSON: " + err.Error(),
@@ -118,13 +118,13 @@ func EditBook(c *gin.Context) {
 		return
 	}
 
-	err = db.Save(&book).Error
+	err = db.Save(&activity).Error
 	if err != nil {
 		c.JSON(400, gin.H{
-			"error": "cannot create book: " + err.Error(),
+			"error": "cannot create activity: " + err.Error(),
 		})
 		return
 	}
 
-	c.JSON(200, book)
+	c.JSON(200, activity)
 }

@@ -3,7 +3,8 @@ package server
 import (
 	"log"
 
-	routes "github.com/arthuramorim04/go-books-api.git/server/routers"
+	routes "github.com/arthuramorim04/go-activity-api.git/server/routers"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,9 +14,11 @@ type Server struct {
 }
 
 func NewServer() Server {
+	router := gin.Default()
+	router.Use(cors.Default())
 	return Server{
 		port:   "8080",
-		server: gin.Default(),
+		server: router,
 	}
 }
 

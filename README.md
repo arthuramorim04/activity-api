@@ -1,4 +1,4 @@
-# go-books-api
+# go-activity-api
 
 
 API Rest basica utilizando GOLang, PostgreSQL, Gin e JWT 

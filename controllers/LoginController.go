@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"github.com/arthuramorim04/go-books-api.git/database"
-	"github.com/arthuramorim04/go-books-api.git/models"
-	"github.com/arthuramorim04/go-books-api.git/services"
+	"github.com/arthuramorim04/go-activity-api.git/database"
+	"github.com/arthuramorim04/go-activity-api.git/models"
+	"github.com/arthuramorim04/go-activity-api.git/services"
 	"github.com/gin-gonic/gin"
 )
 

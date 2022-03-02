@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/arthuramorim04/go-books-api.git/database"
-	"github.com/arthuramorim04/go-books-api.git/server"
+	"github.com/arthuramorim04/go-activity-api.git/database"
+	"github.com/arthuramorim04/go-activity-api.git/server"
 )
 
 func main() {
